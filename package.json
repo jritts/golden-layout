@@ -28,7 +28,8 @@
     "tslint-config-typings": "^0.2.2",
     "typescript": "^1.8.9",
     "typings": "^0.7.12",
-    "walker": "1.0.6"
+    "walker": "1.0.6",
+    "webpack-cli": "^3.2.3"
   },
   "description": "A multi-screen javascript Layout manager \r https://golden-layout.com",
   "main": "./dist/goldenlayout.js",

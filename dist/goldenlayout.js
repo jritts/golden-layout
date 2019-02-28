@@ -4587,6 +4587,7 @@ lm.utils.copy( lm.items.Stack.prototype, {
 			hasCorrectParent = ( isVertical && this.parent.isColumn ) || ( isHorizontal && this.parent.isRow ),
 			type = isVertical ? 'column' : 'row',
 			dimension = isVertical ? 'height' : 'width',
+			antiDimension = isVertical ? 'width' : 'height',
 			index,
 			stack,
 			rowOrColumn;
@@ -4612,7 +4613,9 @@ lm.utils.copy( lm.items.Stack.prototype, {
 			index = lm.utils.indexOf( this, this.parent.contentItems );
 			this.parent.addChild( contentItem, insertBefore ? index : index + 1, true );
 			this.config[ dimension ] *= 0.5;
+			this.config[ antiDimension ] = this.config[ antiDimension ] || 50;
 			contentItem.config[ dimension ] = this.config[ dimension ];
+			contentItem.config[ antiDimension ] = contentItem.config[ antiDimension ] || this.config[ antiDimension ];
 			this.parent.callDownwards( 'setSize' );
 			/*
 			 * This handles items that are dropped on top or bottom of a row or left / right of a column. We need
@@ -4627,7 +4630,9 @@ lm.utils.copy( lm.items.Stack.prototype, {
 			rowOrColumn.addChild( this, insertBefore ? undefined : 0, true );
 
 			this.config[ dimension ] = 50;
+			this.config[ antiDimension ] = this.config[ antiDimension ] || 50;
 			contentItem.config[ dimension ] = 50;
+			contentItem.config[ antiDimension ] = contentItem.config[ antiDimension ] || 50;
 			rowOrColumn.callDownwards( 'setSize' );
 		}
 	},
