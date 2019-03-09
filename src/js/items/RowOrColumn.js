@@ -401,7 +401,9 @@ lm.utils.copy( lm.items.RowOrColumn.prototype, {
 		 * Set every items size relative to 100 relative to its size to total
 		 */
 		for( i = 0; i < this.contentItems.length; i++ ) {
-			this.contentItems[ i ].config.width = (allEntries[ i ].width / sizeData.totalWidth) * 100;
+			if (sizeData.totalWidth !== 0) {
+				this.contentItems[ i ].config.width = (allEntries[ i ].width / sizeData.totalWidth) * 100;
+			}
 		}
 	},
 
