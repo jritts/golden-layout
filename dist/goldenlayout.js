@@ -3933,7 +3933,7 @@ lm.utils.copy( lm.items.RowOrColumn.prototype, {
 	 * @returns {void}
 	 */
 	removeChild: function( contentItem, keepChild ) {
-		var removedItemSize = contentItem.config[ this._dimension ],
+		var removedItemSize = contentItem.config[ this._dimension ] || 0,
 			index = lm.utils.indexOf( contentItem, this.contentItems ),
 			splitterIndex = Math.max( index - 1, 0 ),
 			i,
